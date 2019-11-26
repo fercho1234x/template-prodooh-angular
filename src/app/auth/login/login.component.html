@@ -1,0 +1,56 @@
+<!-- Header
+		    ================================================== -->
+<header class="clearfix white-header-style fullwidth-with-search">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/logo-black.png" alt="">
+            </a>
+
+        </div>
+    </nav>
+</header>
+<!-- End Header -->
+
+<!-- sign-block
+                    ================================================== -->
+<section class="sign">
+    <div class="sign__area text-center centrado">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-sign-tab" data-toggle="tab" href="#nav-sign" role="tab" aria-controls="nav-sign" aria-selected="true">Sign in</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-sign" role="tabpanel" aria-labelledby="nav-sign-tab">
+
+                <!-- sign-form-module -->
+                <form class="sign-form">
+                    <label class="sign-form__label" for="username">
+                                        Email address or Username:
+                                    </label>
+                    <input class="sign-form__input-text" type="text" name="username" id="username" placeholder="Email or Username" />
+                    <label class="sign-form__label" for="password">
+                                        Password:
+                                    </label>
+                    <input class="sign-form__input-text" type="password" name="password" id="password" placeholder="Password" />
+                    <div class="sign-form__checkbox">
+                        <input class="sign-form__input-checkbox" type="checkbox" name="rememb-check" id="rememb-check" />
+                        <span class="sign-form__checkbox-style"></span>
+                        <span class="sign-form__checkbox-text">Remember me</span>
+                    </div>
+
+                    <button routerLink="/demo" class="sign-form__submit" id="submit-loggin" type="submit">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i> Login
+                    </button>
+                </form>
+
+                <!-- End sign-form-module -->
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End sign-block -->
