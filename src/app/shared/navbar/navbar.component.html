@@ -14,23 +14,20 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li>
-                        <a class="active" href="index.html">Home <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    <li *ngIf="menu">
+                        <a class="active">{{ menu.title | translate }}<i class="fa fa-caret-down" aria-hidden="true"></i></a>
                         <ul class="dropdown">
-                            <li><span>Demo Pages</span></li>
-                            <li><a href="index.html">Homepage 1</a></li>
-                            <li><a href="home2.html">Homepage 2</a></li>
-                            <li><a href="home3.html">Homepage 3</a></li>
-                            <li><a href="home4.html">Homepage 4</a></li>
+                            <li *ngFor="let option of menu.submenu"><a [routerLink]="option.url">{{ option.title | translate }}</a></li>
                         </ul>
                     </li>
+                    <li><a routerLink="directory" class="directorio">{{ 'directory' | translate }}</a></li>
                 </ul>
                 <ul class="navbar-nav ml-auto right-list">
                     <li>
-                        <a class="ml-5" href="#">Usuario <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        <a class="ml-5">{{ 'user' | translate }} <i class="fa fa-caret-down" aria-hidden="true"></i></a>
                         <ul class="dropdown">
-                            <li><a href=""><i class="fa fa-user-circle" aria-hidden="true"></i> Perfil<strong></strong></a></li>
-                            <li><a href=""><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out<strong>!</strong></a></li>
+                            <li><a href=""><i class="fa fa-user-circle" aria-hidden="true"></i> {{ 'profile' | translate }}<strong></strong></a></li>
+                            <li><a href="#" (click)="authService.logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'logOut' | translate }}<strong>!</strong></a></li>
                         </ul>
                     </li>
                 </ul>

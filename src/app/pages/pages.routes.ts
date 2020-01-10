@@ -1,17 +1,18 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { PagesComponent } from './pages.component';
 import { DemoComponent } from './demo/demo.component';
+import { AuthGuard } from '../services/guards/auth.guard';
+import { AdministratorComponent } from './administrator/administrator.component';
+import { DirectoryComponent } from './directory/directory.component';
 
 const PAGESROUTES: Routes = [
-    {
-        path: '',
-        component: PagesComponent,
-        children: [
-            { path: 'demo', component: DemoComponent },
-            { path: '', redirectTo: '/demo', pathMatch: 'full' },
-        ]
-    }
+    { 
+        path: 'administrator',
+        component: AdministratorComponent,
+        loadChildren: './administrator/administrator.module#AdministratorModule'
+    },
+    { path: 'directory', component: DirectoryComponent },
+    { path: '', redirectTo: '/directory', pathMatch: 'full' },
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild( PAGESROUTES );

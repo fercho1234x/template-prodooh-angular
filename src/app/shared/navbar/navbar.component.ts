@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-declare function init_plugins();
+import { AuthService } from '../../services/auth/auth.service';
+import { Roles } from '../../models/roles.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +9,31 @@ declare function init_plugins();
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  menu: any = {};
+
+  constructor( public authService: AuthService ) {}
 
   ngOnInit() {
-    init_plugins();
+    
+    this.authService.getUserAuthenticated()
+      .subscribe( () => {
+        let roles = new Roles();
+        let role = this.authService.token.role_slug;
+    
+        switch ( this.authService.token.role_slug ) {
+          case 'superAdministrator':
+            role = 'administrator';
+            break;
+          case 'sellerCosts':
+            role = 'seller';
+            break;
+          case 'customerCosts':
+            role = 'customer';
+            break;
+        }
+      
+        this.menu = roles.getMenu( role );
+      })
   }
 
 }

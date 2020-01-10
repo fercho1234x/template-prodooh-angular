@@ -1,0 +1,129 @@
+<!-- add-listing
+			================================================== -->
+<section class="add-listing">
+    <div class="add-listing__title-box">
+        <div class="container">
+            <h1 class="add-listing__title">
+                {{ title | translate }}
+            </h1>
+        </div>
+    </div>
+
+    <!-- user scroll menu box -->
+    <div class="user-detail__scroll-menu-box scroller-menu">
+        <div class="container">
+            <ul class="user-detail__scroll-menu navigate-section">
+                <li>
+                    <a class="active" href="#generalInformation" data-offset="30">{{ 'generalInformation' | translate }}</a>
+                </li>
+                <li>
+                    <a href="#contact" data-offset="30">{{ 'contact' | translate }}</a>
+                </li>
+                <li>
+                    <a href="#userImage" data-offset="30">{{ 'userImage' | translate }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- form listing -->
+    <form ngNativeValidate [formGroup]="forma" (ngSubmit)="saveData()" class="add-listing__form" #myform="ngForm">
+
+        <div class="container">
+
+            <!-- form box -->
+            <div class="add-listing__form-box element-waypoint" id="generalInformation">
+
+                <h2 class="add-listing__form-title">
+                    {{ 'generalInformation' | translate }}
+                </h2>
+
+                <div class="add-listing__form-content">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <label class="add-listing__label" for="name">
+                                {{ 'name' | translate }}
+                                <small *ngIf="forma.get('name').hasError('required') && myform.submitted" class="text-danger ml-2">
+                                    {{ 'errorMessages.requiredField' | translate }}
+                                </small>
+                            </label>
+                            <input formControlName="name" class="add-listing__input" type="text" name="name" placeholder="{{ 'name' | translate }}" required/>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="add-listing__label" for="surnames">
+                                {{ 'surnames' | translate }}
+                            </label>
+                            <input formControlName="surnames" class="add-listing__input" type="text" name="surnames" id="surnames" placeholder="{{ 'surnames' | translate }}" required/>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ng-select2 formControlName="company" [width]="400" [data]="companiesDataSelect2" [placeholder]="placeholderCompany" required></ng-select2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- form box -->
+            <div class="add-listing__form-box element-waypoint" id="contact">
+
+                <h2 class="add-listing__form-title">
+                    {{ 'contact' | translate }}
+                </h2>
+
+                <div class="add-listing__form-content">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <label class="add-listing__label" for="email">
+                                {{ 'email' | translate }}
+                            </label>
+                            <input formControlName="email" class="add-listing__input" type="email" name="email" id="email" placeholder="{{ 'email' | translate }}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="add-listing__label" for="password">
+                                {{ 'password' | translate }}
+                            </label>
+                            <input formControlName="password" class="add-listing__input" type="password" name="password" id="password" placeholder="{{ 'password' | translate }}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="add-listing__label" for="user_type">
+                                {{ 'typeOfUser' | translate }}
+                            </label>
+                            <select formControlName="typeOfUser" class="add-listing__input" name="user_type" id="user_type">
+                                <option value="">{{ 'typeOfUser' | translate }}</option>
+                                <option value="1">{{ 'superAdministrator' | translate }}</option>
+                                <option value="2">{{ 'administrator' | translate }}</option>
+                                <option value="3">{{ 'salesManager' | translate }}</option>
+                                <option value="4">{{ 'administratorProvider' | translate }}</option>
+                                <option value="5">{{ 'sellerCosts' | translate }}</option>
+                                <option value="6">{{ 'seller' | translate }}</option>
+                                <option value="7">{{ 'customerCosts' | translate }}</option>
+                                <option value="8">{{ 'customer' | translate }}</option>
+                                <option value="9">{{ 'suspended' | translate }}</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="center-button">
+                <button class="add-listing__submit" type="submit">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    {{ 'save' | translate }}
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+</section>
+<!-- End add-listing -->

@@ -1,0 +1,42 @@
+<!-- user-detail
+			================================================== -->
+<section class="user-detail">
+    <div class="user-detail__profile">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="user-detail__profile-box">
+                        <a class="user-detail__profile-image" href="#"><img [src]="userAuth.img_profile | img:'users'" alt=""></a>
+                        <h3 class="user-detail__profile-title">
+                            <a href="#">{{ userAuth.name | titlecase }} {{ userAuth.surnames | titlecase }}</a>
+                            <span class="user-detail__profile-location">
+                                <i class="fa fa-user-circle" aria-hidden="true"></i> {{ userAuth.role_slug | translate }}
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <!--<div class="col-lg-7">
+                    <a class="user-detail__profile-btn btn-default btn-default-red" href="#">
+                        <i class="la la-eye"></i> Follow
+                    </a>
+                    <ul class="user-detail__profile-list">
+                        <li>
+                            <span>42</span> List
+                        </li>
+                        <li>
+                            <span>12</span> Followers
+                        </li>
+                        <li>
+                            <span>34</span> Following
+                        </li>
+                        <li>
+                            <span>56</span> Reviews
+                        </li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- End user-detail -->

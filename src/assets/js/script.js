@@ -1,5 +1,8 @@
 /*jshint jquery:true */
 function init_plugins() {
+
+    /*jshint jquery:true */
+
     $(document).ready(function($) {
         "use strict";
 
@@ -13,18 +16,20 @@ function init_plugins() {
 
 
         function isoFunction() {
-            $container.isotope({
+            /*$container.isotope({
                 layoutMode: 'masonry',
                 animationOptions: {
                     duration: 750,
                     easing: 'linear'
                 }
-            });
+            });*/
         }
 
+        /*
         $container.imagesLoaded(function() {
             isoFunction();
         });
+        */
 
         winDow.on('resize', function() {
             isoFunction();
@@ -142,7 +147,7 @@ function init_plugins() {
         /* =  count increment
         /*-------------------------------------------------*/
 
-        $('.statistic-post').appear(function() {
+        /*$('.statistic-post').appear(function() {
             $('.timer').countTo({
                 speed: 4000,
                 refreshInterval: 60,
@@ -150,7 +155,7 @@ function init_plugins() {
                     return value.toFixed(options.decimals);
                 }
             });
-        });
+        });*/
 
         /*-------------------------------------------------*/
         /* =  OWL carousell
@@ -205,14 +210,14 @@ function init_plugins() {
         /*	Select2
         /* ---------------------------------------------------------------------- */
 
-        $('.js-example-basic-multiple').select2();
+        //  $('.js-example-basic-multiple').select2();
 
 
         /*-------------------------------------------------*/
         /* =  scroll between sections
         /*-------------------------------------------------*/
 
-        $('.navigate-section > li > a[href*=#], a.navigate-btn[href*=#]').on('click', function(event) {
+        /*$('.navigate-section > li > a[href*=#], a.navigate-btn[href*=#]').on('click', function(event) {
             event.preventDefault();
             var dataOffset = 0;
 
@@ -224,19 +229,20 @@ function init_plugins() {
             $('html, body').animate({
                 scrollTop: $($(this).attr('href')).offset().top - offset
             }, 500, 'linear');
-        });
+        });*/
 
         /*-------------------------------------------------*/
         /* =  add active state in nav menu for active section
         /*-------------------------------------------------*/
 
+        /*
         $('.element-waypoint').each(function() {
             var currentDiv = $(this);
             currentDiv.waypoint({
                 handler: function(direction) {
                     if (direction === 'down') {
                         var containerID = currentDiv.attr('id');
-                        /* update navigation */
+                        update navigation
                         $('.navigate-section > li > a').removeClass('active');
                         $('.navigate-section > li > a[href*=#' + containerID + ']').addClass('active');
                     }
@@ -248,7 +254,7 @@ function init_plugins() {
                 handler: function(direction) {
                     if (direction === 'up') {
                         var containerID = currentDiv.attr('id');
-                        /* update navigation */
+                        update navigation
                         $('.navigate-section > li > a').removeClass('active');
                         $('.navigate-section > li > a[href*=#' + containerID + ']').addClass('active');
                     }
@@ -256,6 +262,8 @@ function init_plugins() {
                 offset: '0'
             });
         });
+        
+        */
 
         /*-------------------------------------------------*/
         /* =  view all photos in single listing details,
@@ -452,6 +460,17 @@ function init_plugins() {
         }
 
     });
+
+    // resize triger function
+
+    function Resize() {
+        $(window).trigger('resize');
+    }
+
+
+
+
+
 }
 
 // resize triger function

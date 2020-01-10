@@ -11,6 +11,7 @@
 
         </div>
     </nav>
+
 </header>
 <!-- End Header -->
 
@@ -20,30 +21,32 @@
     <div class="sign__area text-center centrado">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-sign-tab" data-toggle="tab" href="#nav-sign" role="tab" aria-controls="nav-sign" aria-selected="true">Sign in</a>
+                <a class="nav-item nav-link active" id="nav-sign-tab" data-toggle="tab" href="#nav-sign" role="tab" aria-controls="nav-sign" aria-selected="true">{{ 'logIn' | translate }}</a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-sign" role="tabpanel" aria-labelledby="nav-sign-tab">
 
                 <!-- sign-form-module -->
-                <form class="sign-form">
-                    <label class="sign-form__label" for="username">
-                                        Email address or Username:
-                                    </label>
-                    <input class="sign-form__input-text" type="text" name="username" id="username" placeholder="Email or Username" />
+                <form ngNativeValidate [formGroup]="forma" (ngSubmit)="login()" class="sign-form">
+
+                    <label class="sign-form__label" for="email">
+                        {{ 'email' | translate }}
+                    </label>
+                    <input formControlName="email" class="sign-form__input-text" id="email" type="email" name="email" placeholder="example@example.com" required/>
+
                     <label class="sign-form__label" for="password">
-                                        Password:
-                                    </label>
-                    <input class="sign-form__input-text" type="password" name="password" id="password" placeholder="Password" />
+                        {{ 'password' | translate }}:
+                    </label>
+                    <input formControlName="password" class="sign-form__input-text" id="password" type="password" name="password" placeholder="{{ 'password' | translate }}" required/>
                     <div class="sign-form__checkbox">
-                        <input class="sign-form__input-checkbox" type="checkbox" name="rememb-check" id="rememb-check" />
+                        <input formControlName="remember" class="sign-form__input-checkbox" type="checkbox" name="rememb-check" id="rememb-check" />
                         <span class="sign-form__checkbox-style"></span>
-                        <span class="sign-form__checkbox-text">Remember me</span>
+                        <span class="sign-form__checkbox-text">{{ 'rememberMe' | translate }}</span>
                     </div>
 
-                    <button routerLink="/demo" class="sign-form__submit" id="submit-loggin" type="submit">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i> Login
+                    <button class="sign-form__submit" id="submit-loggin" type="submit">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i> {{ 'logIn' | translate }}
                     </button>
                 </form>
 

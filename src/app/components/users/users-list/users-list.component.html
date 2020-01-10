@@ -1,0 +1,78 @@
+<div class="user-detail__scroll-menu-box scroller-menu">
+    <div class="container">
+        <ul class="user-detail__scroll-menu navigate-section">
+            <li>
+                <a *ngIf="role === 'superAdministrator'" class="active" href="#superadministrator" data-offset="30">{{ 'superAdministrators' | translate }}</a>
+            </li>
+            <li>
+                <a *ngIf="role === 'superAdministrator' || role === 'administrator'" href="#administrator" data-offset="30">{{ 'administrators' | translate }}</a>
+            </li>
+            <li>
+                <a *ngIf="role === 'superAdministrator' || role === 'administrator'" href="#salesmanager" data-offset="30">{{ 'salesManagers' | translate }}</a>
+            </li>
+            <li>
+                <a *ngIf="role === 'superAdministrator' || role === 'administrator' || role === 'sellers'" href="#sellers" data-offset="30">{{ 'sellers' | translate }}</a>
+            </li>
+            <li>
+                <a *ngIf="role === 'superAdministrator' || role === 'administrator' || role === 'salesManager' || role === 'sellerCosts' || role === 'seller'" href="#customers" data-offset="30">{{ 'customers' | translate }}</a>
+            </li>
+            <li>
+                <a *ngIf="role === 'superAdministrator' || role === 'administrator'" href="#partners" data-offset="30">{{ 'partners' | translate }}</a>
+            </li>
+            <li>
+                <a *ngIf="role === 'superAdministrator' || role === 'administrator'" href="#partners" data-offset="30">{{ 'suspendedUsers' | translate }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <a routerLink="/administrator/users/register" class="btn btn-info btn-sm btn-anadir mb-5"><i class="fa fa-plus" aria-hidden="true"></i>
+        {{ 'addNewUser' | translate }}</a>
+</div>
+
+<div *ngIf="role == 'superAdministrator' && superAdministrators" class="user-detail__mylist element-waypoint" id="superadministrator" style="position:relative;">
+    <div class="container">
+        <h2 class="user-detail__subtitle">{{ 'superAdministrators' | translate }}</h2>
+        <div class="user-detail__mylist-box">
+            <!-- Table Users -->
+            <!-- <table datatable [dtOptions]="dtOptions" class="row-border hover"></table> -->
+            <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{{ 'name' | translate }}</th>
+                        <th>{{ 'surnames' | translate }}</th>
+                        <th>{{ 'email' | translate }}</th>
+                        <th>{{ 'actions' | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let superadministrator of superAdministrators; let idx = index">
+                        <td>{{ idx + 1 }}</td>
+                        <td>{{ superadministrator.name }}</td>
+                        <td>{{ superadministrator.surnames }}</td>
+                        <td>{{ superadministrator.email }}</td>
+                        <td>
+                            <div>
+                                <button class="btn btn-warning btn-sm mr-1" (click)="editUser( superadministrator )">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar
+                                </button>
+                                <button class="btn btn-danger btn-sm mr-1" disabled>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    Eliminar
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Table Users -->
+        </div>
+    </div>
+</div>
+<div class="user-detail__mylist element-waypoint mb-5" id="administrator" style="position:relative;"></div>
+<div class="user-detail__mylist element-waypoint mb-5" id="salesmanager" style="position:relative;"></div>
+<div class="user-detail__mylist element-waypoint mb-5" id="sellers" style="position:relative;"></div>
+<div class="user-detail__mylist element-waypoint mb-5" id="customers" style="position:relative;"></div>
+<div class="user-detail__mylist element-waypoint mb-5" id="partners" style="position:relative;"></div>
